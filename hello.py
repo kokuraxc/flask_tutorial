@@ -1,4 +1,4 @@
-from flask import Flask, escape, url_for, request
+from flask import Flask, escape, url_for, request, render_template
 app = Flask(__name__)
 
 
@@ -35,11 +35,12 @@ def about():
     return 'the about page'
 
 
-with app.test_request_context():
+""" with app.test_request_context():
     print(url_for('about'))
     print(url_for('hello_world'))
     print(url_for('show_subpath', subpath='this/is/sub/path'))
     print(url_for('projects'))
+    print(url_for('static', filename='style.css')) """
 
 
 def show_the_login_form():
@@ -57,3 +58,7 @@ def login():
 def do_the_login():
     return 'You are loged in'
 
+@app.route('/hello/')
+@app.route('/hello/<name>')
+def hello(name=None):
+    return render_template('hello.html', name=name)

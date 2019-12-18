@@ -55,5 +55,5 @@ def login():
 
 
 def do_the_login():
-    return 'You are loged in'
+    return 'You are logged in'
 
